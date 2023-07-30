@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
@@ -13,7 +16,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto increment
     int id;
 
     String name;
@@ -23,7 +26,18 @@ public class Person {
     @Column(unique = true, nullable = false)
     String emailId;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) //  Converts Enum to string
     Gender gender;
+
+    boolean isDose1Taken;
+
+    boolean isDose2Taken;
+
+//    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL) //I want to transfer all the operation
+//            // to childern
+//    List<Dose> dosesTaken = new ArrayList<>();
+//
+//    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+//    Certificate certificate;
 
 }

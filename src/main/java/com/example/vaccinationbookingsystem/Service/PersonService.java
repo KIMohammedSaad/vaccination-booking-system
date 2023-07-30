@@ -11,6 +11,8 @@ public class PersonService {
     @Autowired
     PersonRepository personRepository;
     public Person addPerson(Person person) {
+        person.setDose1Taken(false);
+        person.setDose2Taken(false);
         Person savedPerson = personRepository.save(person);
         return savedPerson;
     }

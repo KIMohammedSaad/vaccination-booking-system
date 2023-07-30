@@ -17,7 +17,6 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-
     @PostMapping("/add")
     public ResponseEntity addPerson(@RequestBody Person person){
         try {
